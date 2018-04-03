@@ -1,10 +1,11 @@
-# Práctica nodepop de MasterBootcamp Web Keepcoding.
+# Práctica Nodejs Avanzado (nodepop_avanced) de MasterBootcamp Web Keepcoding.
 
-### Fundamentos Nodejs - Mongodb - Express
+### Nodejs - Mongodb - Express
 
 * Arrancar la base de datos mongodb.
+**La carpeta completa mongodb, debe estar en el directorio nodepop_avanced para que funcionen los scripts de package.json
 
-./bin/mongod --dbpath ./data/db --directoryperdb
+**./bin/mongod --dbpath ./data/db --directoryperdb**
 
 en nuestro caso, por comodidad hemos creado un script en la ruta mongodb y llamamos con npm run startdb
 
@@ -19,42 +20,15 @@ en nuestro caso, por comodidad hemos creado un script en la ruta mongodb y llama
 arrancar nuestro servidor
 nodemon o npm run start
 
-## **Tema de listados**
+La presente práctica se basa sobre la partica de nodejs fundamentos, revisar repositorio correspondiente para ver que se pedia, en esta práctica se pide
+
+## **Práctica nodejs avanzada**
+#### Índice de retos:1. Autenticación
+	* Implementar autenticación JWT al API.    2. Internacionalización.
+	* Este reto consiste en convertir el frontend de anuncios de la aplicación Nodepop enmulti-idioma.    
+3. Subida de imagen con tarea en background
+	* El API necesita un end-point para crear anuncios.4. Testing (Opcional)
+	* Hagamos que la calidad sea una característica de nuestro software.Este reto consiste en incluir tests e2e del API de Anuncios con Supertesthttps://github.com/visionmedia/supertest5. BONUS TRACK
+	* Se propone hacer alguna utilidad de nuestra invención que pueda resultar útil para nosotrosmismos o para otros.
 
 
-
-### **Se pueden aplicar filtros usando los parametros siguientes: Nombre, estado (compra o vende), precio, foto, tags.
-**
-    Añadimos esta etiqueta o varias a la pagina ?nombre=bicicleta1 o directamente ?nombre=bicicleta http://localhost:3000/anuncios?nombre=bicicleta
-
-    Ordenado http://localhost:3000/anuncios?nombre=bicicleta&sort=nombre
-
-    Ordenado descendente http://localhost:3000/anuncios?nombre=bicicleta&sort=-nombre
-
-    Limitado a x anuncios, en este ejmplo1 http://localhost:3000/anuncios?nombre=bicicleta&limit=1
-
-    Limitado a estado compra o vende, este ejemplo compra ordenado precio http://localhost:3000/anuncios?estado=compra&sort=precio>
-
-    Limitado a estado compra o vende, este ejemplo vende ordenado precio descendiente http://localhost:3000/anuncios?estado=vende&sort=-precio
-
-    Listado por precios Busca por precio ("x-" -> Mayor que x || "x-y" -> Entre x e y || "-y" -> Menor qu. En este ejemplo mayor a 600: http://localhost:3000/anuncios?precio=600-
-
-    Listado por precios Busca por precio ("x-" -> Mayor que x || "x-y" -> Entre x e y || "-y" -> Menor que y En este ejemplo menor a 600: http://localhost:3000/anuncios?precio=-600
-
-    En este ejemplo entre 100 y 800: http://localhost:3000/anuncios?precio=100-800&sort=-precio
-
-    Se pueden aplicar filtros para ordenar "sort", limitar "limit", saltar algun valor "skip"
-
-    Listado por nombre = biclice, precio mayor que 600, ordenador precio descendiente, limitada a dos busqueda. http://localhost:3000/anuncios?nombre=bicicle&precio=400-&sort=-precio&limit=1
-    tags: Busca por tags o etiquetas ("lifestyle", "motor", "mobile", "work")
-### **
-###     Todos los ejemplos anteriores pueden realizarse atacando a la api: /apiv1/anuncios
-**
-    En este ejemplo entre 100 y 800: http://localhost:3000/apiv1/anuncios?precio=100-800&sort=-precio
-
-    Añadir anuncios:
-
-    Realizando una petición post a la dirección http://localhost:3000/apiv1/anuncios se pueden añadir nuevos anuncios a la base de datos.
-    Borrar anuncios:
-
-    Realizando una petición delete a la dirección http://localhost:3000/apiv1/anuncios se pueden borrar anuncios a la base de datos.
