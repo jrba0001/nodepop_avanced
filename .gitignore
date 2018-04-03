@@ -1,4 +1,7 @@
 node_modules
 mongodb
 doc
+package-lock.json
+public-bootstrap
+
 
