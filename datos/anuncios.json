@@ -1,0 +1,62 @@
+[
+  {
+    "nombre": "Bicicleta1",
+    "estado": "compra",
+    "precio": 100,
+    "foto": "bicicleta1.jpg",
+    "tags": ["lifestyle", "motor"]
+  },
+  {
+    "nombre": "portatil",
+    "estado": "vende",
+    "precio": 600,
+    "foto": "bicicleta2.jpg",
+    "tags": ["work"]
+  },
+
+  {
+    "nombre": "iPhone 3GS",
+    "estado": "compra",
+    "precio": 50,
+    "foto": "bicicleta3.jpg",
+    "tags": ["lifestyle", "mobile"]
+  },
+
+  {
+    "nombre": "Bicicleta4",
+    "estado": "vende",
+    "precio": 30,
+    "foto": "bicicleta4.jpg",
+    "tags": ["lifestyle", "motor"]
+  },
+
+  {
+    "nombre": "Bicicleta5",
+    "estado": "vende",
+    "precio": 3000,
+    "foto": "bicicleta5.jpg",
+    "tags": ["lifestyle", "motor"]
+  },
+
+  {
+    "nombre": "Bicicleta6",
+    "estado": "compra",
+    "precio": 400,
+    "foto": "bicicleta6.jpg",
+    "tags": ["lifestyle", "motor"]
+  },
+  {
+    "nombre": "Bicicleta7",
+    "estado": "vende",
+    "precio": 10,
+    "foto": "bicicleta7.jpg",
+    "tags": ["lifestyle", "motor"]
+  },
+  {
+    "nombre": "Bicicleta8",
+    "estado": "compra",
+    "precio": 150,
+    "foto": "bicicleta8.jpg",
+    "tags": ["lifestyle", "motor"]
+  }
+]

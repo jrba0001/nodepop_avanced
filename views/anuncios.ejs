@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1>
+        <%= title %>
+    </h1>
+    <h3>Práctica Nodepop. Keepcoding. Node fundamentos.</h3>
+    <br>
+    <h3>Listado de anuncios:</h3>
+    <input type="button" value="Volver a Inicio" onclick="history.back();location.href='/'" />
+    <TABLE BORDER ALIGN=CENTER WIDTH="90%">
+
+        <% anuncios.forEach(anuncio => {  %>
+            <tr>
+                <td>
+                    <p>
+                        <b>Artículo:</b>
+                        <%= anuncio.nombre %>
+                    </p>
+                    <p>
+                        <b>Estado:</b>
+                        <%= anuncio.estado %>
+                    </p>
+                    <p>
+                        <b>Precio:</b>
+                        <%= anuncio.precio %> €</p>
+                    <p>
+                        <b>Etiquetas: </b>
+                        <% anuncio.tags.forEach(tag => {  %>
+                            <%= tag %>
+                                <% }) %>
+                    </p>
+                </td>
+                <td ALIGN=CENTER>
+                    <img src="images/anuncios/<%= anuncio.foto %>" alt="Foto Articulo" width="450" height="400">
+                </td>
+            </tr>
+            <br>
+            <% }) %>
+</body>
+
+</html>
