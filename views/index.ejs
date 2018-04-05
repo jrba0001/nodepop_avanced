@@ -1,17 +1,5 @@
 <% include header.html %>
-
-
-  <br>
-
-  <h3>Escoja tipo listado html/json</h3>
-  <h2>
-    <select name="Tipo Listado" id="ordenar" onchange="window.location.href=this.value">
-      <option value=""></option>
-      <option value="/anuncios">Html</option>
-      <option value="/apiv1/anuncios">JSON</option>
-    </select>
     <br>
-
     <h3>Filtros:</h3>
     <h4>
       <p>Se pueden aplicar filtros usando los parametros siguientes: Nombre, estado (compra o vende), precio, foto, tags.</p>
@@ -19,39 +7,39 @@
     <ul>
       <li>
         <p> Añadimos esta etiqueta o varias a la pagina ?nombre=bicicleta1 o directamente ?nombre=bicicleta
-          <a href="/anuncios?nombre=bicicleta">http://localhost:3000/anuncios?nombre=bicicleta</a>
+          <a href="/?nombre=bicicleta">http://localhost:3000/?nombre=bicicleta</a>
         </p>
       </li>
       <li>
         <p>Ordenado
-          <a href="/anuncios?nombre=bicicleta&sort=nombre">http://localhost:3000/anuncios?nombre=bicicleta&sort=nombre</a>
+          <a href="/?nombre=bicicleta&sort=nombre">http://localhost:3000/?nombre=bicicleta&sort=nombre</a>
         </p>
       </li>
       <li>
         <p>Ordenado descendente
-          <a href="/anuncios?nombre=bicicleta&sort=-nombre">http://localhost:3000/anuncios?nombre=bicicleta&sort=-nombre</a>
+          <a href="/?nombre=bicicleta&sort=-nombre">http://localhost:3000/?nombre=bicicleta&sort=-nombre</a>
         </p>
         <li>
           <p>Limitado a x anuncios, en este ejmplo1
-            <a href="/anuncios?nombre=bicicleta&limit=1">http://localhost:3000/anuncios?nombre=bicicleta&limit=1</a>
+            <a href="/?nombre=bicicleta&limit=1">http://localhost:3000/?nombre=bicicleta&limit=1</a>
           </p>
         </li>
         <li>
           </p>Limitado a estado compra o vende, este ejemplo compra ordenado precio
-          <a href="/anuncios?estado=compra&sort=precio">
-            http://localhost:3000/anuncios?estado=compra&sort=precio</a>>
+          <a href="/?estado=compra&sort=precio">
+            http://localhost:3000/?estado=compra&sort=precio</a>>
           </p>
         </li>
         <li>
           <p>Limitado a estado compra o vende, este ejemplo vende ordenado precio descendiente
-            <a href="/anuncios?estado=vende&sort=-precio">
-              http://localhost:3000/anuncios?estado=vende&sort=-precio</a>
+            <a href="/?estado=vende&sort=-precio">
+              http://localhost:3000/?estado=vende&sort=-precio</a>
           </p>
         </li>
         <li>
           <p>Listado por precios Busca por precio ("x-" -> Mayor que x || "x-y" -> Entre x e y || "-y" -> Menor qu. En este
             ejemplo mayor a 600:
-            <a href="/anuncios?precio=600-"> http://localhost:3000/anuncios?precio=600-</a>
+            <a href="/?precio=600-"> http://localhost:3000/?precio=600-</a>
           </p>
         </li>
         <li>
@@ -59,12 +47,12 @@
             '50' } } ○ 10- buscará los que tengan precio mayor que 10 { precio: { '$gte': '10' } } ○ -50 buscará los que
             tengan precio menor de 50 { precio: { '$lte': '50' } } ○ 50 buscará los que tengan precio igual a 50 { precio:
             '50' } En este ejemplo menor a 600:
-            <a href="/anuncios?precio=-600"> http://localhost:3000/anuncios?precio=-600</a>
+            <a href="/?precio=-600"> http://localhost:3000/?precio=-600</a>
           </p>
         </li>
         <li>
           <p>En este ejemplo entre 100 y 800:
-            <a href="/anuncios?precio=100-800&sort=-precio"> http://localhost:3000/anuncios?precio=100-800&sort=-precio</a>
+            <a href="/?precio=100-800&sort=-precio"> http://localhost:3000/?precio=100-800&sort=-precio</a>
           </p>
         </li>
         <h4>
@@ -72,7 +60,7 @@
         </h4>
         <li>
           <p>Listado por nombre = biclice, precio mayor que 1000, ordenador precio descendiente, limitada a una busqueda.
-            <a href="/anuncios?nombre=bicicle&precio=1000-&sort=-precio&limit=1"> http://localhost:3000/anuncios?nombre=bicicle&precio=1000-&sort=-precio&limit=1</a>
+            <a href="/?nombre=bicicle&precio=1000-&sort=-precio&limit=1"> http://localhost:3000/?nombre=bicicle&precio=1000-&sort=-precio&limit=1</a>
           </p>
         </li>
         <b>tags: </b>Busca por tags o etiquetas ("lifestyle", "motor", "mobile", "work") </p>
@@ -96,4 +84,42 @@
         <h3>Borrar anuncios:</h3>
         <p>Realizando una petición delete a la dirección
           <a href="/apiv1/anuncios">http://localhost:3000/apiv1/anuncios</a> se pueden borrar anuncios a la base de datos.</p>
+          <br>
+         <!-- articulos -->
+    <section id="services">
+      <div class="col-lg-12 text-center">
+        <h3> Listado de anuncios:</h3>
+        <TABLE BORDER ALIGN=CENTER WIDTH="90%">
+          <% anuncios.forEach(anuncio => {%>
+            <tr>
+              <td>
+              <p>
+                <b>Artículo:</b>
+                <%= anuncio.nombre %>
+              </p>
+              <p>
+                <b>Estado:</b>
+                <%= anuncio.estado %>
+              </p>
+              <p>
+                <b>Precio:</b>
+                <%= anuncio.precio %> €</p>
+              </p>
+                <p>
+                  <b>Etiquetas: </b>
+                    <% anuncio.tags.forEach(tag => {  %>
+                       <%= tag %>
+                    <% }) %>
+                 </p>
+              </td>
+              <td ALIGN=CENTER>
+                <img src="images/anuncios/<%= anuncio.foto %>" alt="Foto Articulo" width="450" height="400">
+              </td>
+            </tr>
+            <br>
+            <% }) %>
+          </div>
+      </div>
+    </section>
+
 <% include footer.html %>

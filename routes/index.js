@@ -7,16 +7,15 @@ var router = express.Router();
 const Anuncio = require("../models/Anuncio");
 
 // Se cargan las librerías de validaciones
-const { query, validationResult } = require("express-validator/check");
+const {
+  query,
+  validationResult
+} = require("express-validator/check");
 
 // Página de inicio con las opciones e instrucciones
-router.get("/", function(req, res, next) {
-  // Se renderiza
-  res.render("index", { title: "Nodepop" });
-});
 
 // Listado de anuncios HTML
-router.get("/anuncios", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   // Con async/await
   try {
     // Se recogen los parámetros de entrada
@@ -56,7 +55,9 @@ router.get("/anuncios", async (req, res, next) => {
       filtro.tags = [tags];
 
       // Se comprueba si el tag está dentro de los tags de la base de datos
-      filtro.tags = { $in: filtro.tags };
+      filtro.tags = {
+        $in: filtro.tags
+      };
     }
 
     // La función debe ser asíncrona si se usa await
@@ -66,7 +67,9 @@ router.get("/anuncios", async (req, res, next) => {
     res.locals.anuncios = docs;
 
     // Se renderiza
-    res.render("anuncios", { title: "Nodepop" });
+    res.render("index.ejs", {
+      title: "Nodepop"
+    });
   } catch (err) {
     next(err);
     return;
@@ -84,11 +87,15 @@ function filtrarPrecio(precio) {
   }
   // Rango entre x- ( > x )
   if (/^[0-9]+\-$/.test(precio)) {
-    return { $gte: parseInt(precio.match(/[0-9]+/)) };
+    return {
+      $gte: parseInt(precio.match(/[0-9]+/))
+    };
   }
   // Rango entre -y ( < y )
   if (/^-[0-9]+$/.test(precio)) {
-    return { $lte: parseInt(precio.match(/[0-9]+/)) };
+    return {
+      $lte: parseInt(precio.match(/[0-9]+/))
+    };
   }
 
   return parseInt(precio);
