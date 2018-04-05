@@ -4,6 +4,9 @@ var logger = require("morgan");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 // Se conecta la base de datos
 require("./lib/connectMongoose");
 
@@ -35,11 +38,34 @@ app.use(express.static(path.join(__dirname, "public")));
 const i18n = require('./lib/i18nConfigure')();
 app.use(i18n.init);
 
+// middleware de control de sesiones
+app.use(session({
+  name: 'nodepop-session',
+  secret: 'askjdahjdhakdhaskdas7dasd87asd89as7d89asd7a9s8dhjash',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 2 * 24 * 60 * 60 * 1000,
+    httpOnly: true
+  }, // dos dias de inactividad
+  store: new MongoStore({
+    // como conectarse a mi base de datos
+    url: 'mongodb://localhost/cursonode' // fix issue https://github.com/jdesboeufs/connect-mongo/issues/277
+    // mongooseConnection: conn
+  })
+}));
+const loginController = require('./routes/loginController');
+
 /**
  * Middlewares de la aplicación web
  */
+app.get("/login", loginController.index);
+app.post("/login", loginController.post);
+app.get("/logout", loginController.logout);
+
 app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
+app.use("/lang", require("./routes/lang"));
 
 /**
  * Middlewares de la API

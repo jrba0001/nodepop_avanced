@@ -1,1 +1,26 @@
-{}
+{
+	"Menu": "Menú",
+	"Artículos": "Article",
+	"Api": "Api",
+	"Inicio": "start",
+	"Acerca de": "About",
+	"Práctica Nodejs Avanzada nodepop_avanced": "Nodejs Advanced Practice nodepop_avanced",
+	"Filtros": "filters",
+	"Se pueden aplicar filtros usando los parametros siguientes: Nombre, estado (compra o vende), precio, foto, tags.": "Filters can be applied using the following parameters: Name, status (buy or sell), price, photo, tags.",
+	" Añadimos esta etiqueta o varias a la pagina ?nombre=bicicleta1 o directamente ?nombre=bicicleta": " We add this tag or several to the page? Name = bicycle1 or directly? Name = bicycle.",
+	"Ordenado": "Sort",
+	"Ordenado Descendente": "descent sort",
+	" Limitado a x anuncios, en este ejemplo a 1": " limit to  x advertisements, in this example to one",
+	" Limitado a estado compra o vende, este ejmplo compra ordenado precio": " Limited to state buy or sell, this example purchase orderly price",
+	" Limitado a estado compra o vende, este ejemplo vende ordenado precio descendiente": " Limited to buy or sell status, this example sells ordered descending price",
+	" Listado por precios, Busca por precio (\"x-\" -> Mayor que x || \"x-y\" -> Entre x e y || \"-y\" -> Menor que. En este ejemplo mayor a 600: ": " Listing by price, Search by price (\ "
+	x - \" -> Greater than x || \ "
+	x - y\ " -> Between x and y || \ " - and\ " -> Less than In this example greater than 600:",
+	" Listado por nombre = biclice, precio mayor que 1000, ordenador precio descendiente, limitada a una busqueda.": "
+	Listing by name = biclice,
+	price greater than 1000,
+	computer descending price,
+	limited to a search.
+	",
+	"Listado por nombre = bicliceta, precio mayor que 1000, ordenador precio descendiente, limitada a una busqueda.": "Listing by name = bicliceta, price greater than 1000, computer descending price, limited to a search."
+}

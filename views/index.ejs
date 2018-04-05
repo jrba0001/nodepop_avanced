@@ -1,65 +1,50 @@
 <% include header.html %>
     <br>
-    <h3>Filtros:</h3>
+    <h3>
+     <%= __('Filtros') %></h3>
     <h4>
-      <p>Se pueden aplicar filtros usando los parametros siguientes: Nombre, estado (compra o vende), precio, foto, tags.</p>
+      <p> <%= __('Se pueden aplicar filtros usando los parametros siguientes: Nombre, estado (compra o vende), precio, foto, tags.') %></p>
     </h4>
     <ul>
       <li>
-        <p> Añadimos esta etiqueta o varias a la pagina ?nombre=bicicleta1 o directamente ?nombre=bicicleta
+        <p><%= __(' Añadimos esta etiqueta o varias a la pagina ?nombre=bicicleta1 o directamente ?nombre=bicicleta') %>
           <a href="/?nombre=bicicleta">http://localhost:3000/?nombre=bicicleta</a>
         </p>
       </li>
       <li>
-        <p>Ordenado
+        <p><%= __('Ordenado') %>
           <a href="/?nombre=bicicleta&sort=nombre">http://localhost:3000/?nombre=bicicleta&sort=nombre</a>
         </p>
       </li>
       <li>
-        <p>Ordenado descendente
+        <p><%= __('Ordenado Descendente') %>
           <a href="/?nombre=bicicleta&sort=-nombre">http://localhost:3000/?nombre=bicicleta&sort=-nombre</a>
         </p>
+      </li>
         <li>
-          <p>Limitado a x anuncios, en este ejmplo1
+          <p><%= __(' Limitado a x anuncios, en este ejemplo a 1') %>
             <a href="/?nombre=bicicleta&limit=1">http://localhost:3000/?nombre=bicicleta&limit=1</a>
           </p>
         </li>
         <li>
-          </p>Limitado a estado compra o vende, este ejemplo compra ordenado precio
+        <p><%= __(' Limitado a estado compra o vende, este ejmplo compra ordenado precio') %>
           <a href="/?estado=compra&sort=precio">
             http://localhost:3000/?estado=compra&sort=precio</a>>
           </p>
         </li>
         <li>
-          <p>Limitado a estado compra o vende, este ejemplo vende ordenado precio descendiente
+        <p><%= __(' Limitado a estado compra o vende, este ejemplo vende ordenado precio descendiente') %>
             <a href="/?estado=vende&sort=-precio">
               http://localhost:3000/?estado=vende&sort=-precio</a>
           </p>
         </li>
         <li>
-          <p>Listado por precios Busca por precio ("x-" -> Mayor que x || "x-y" -> Entre x e y || "-y" -> Menor qu. En este
-            ejemplo mayor a 600:
+        <p><%= __(' Listado por precios, Busca por precio ("x-" -> Mayor que x || "x-y" -> Entre x e y || "-y" -> Menor que. En este ejemplo mayor a 600: ') %>
             <a href="/?precio=600-"> http://localhost:3000/?precio=600-</a>
-          </p>
+        </p>
         </li>
-        <li>
-          <p>Listado por precios 10-50 buscará anuncios con precio incluido entre estos valores { precio:{ '$gte': '10', '$lte':
-            '50' } } ○ 10- buscará los que tengan precio mayor que 10 { precio: { '$gte': '10' } } ○ -50 buscará los que
-            tengan precio menor de 50 { precio: { '$lte': '50' } } ○ 50 buscará los que tengan precio igual a 50 { precio:
-            '50' } En este ejemplo menor a 600:
-            <a href="/?precio=-600"> http://localhost:3000/?precio=-600</a>
-          </p>
-        </li>
-        <li>
-          <p>En este ejemplo entre 100 y 800:
-            <a href="/?precio=100-800&sort=-precio"> http://localhost:3000/?precio=100-800&sort=-precio</a>
-          </p>
-        </li>
-        <h4>
-          <p>Se pueden aplicar filtros para ordenar "sort", limitar "limit", saltar algun valor "skip"</p>
-        </h4>
-        <li>
-          <p>Listado por nombre = biclice, precio mayor que 1000, ordenador precio descendiente, limitada a una busqueda.
+
+        <p><%= __('Listado por nombre = bicliceta, precio mayor que 1000, ordenador precio descendiente, limitada a una busqueda.') %>
             <a href="/?nombre=bicicle&precio=1000-&sort=-precio&limit=1"> http://localhost:3000/?nombre=bicicle&precio=1000-&sort=-precio&limit=1</a>
           </p>
         </li>
@@ -85,6 +70,7 @@
         <p>Realizando una petición delete a la dirección
           <a href="/apiv1/anuncios">http://localhost:3000/apiv1/anuncios</a> se pueden borrar anuncios a la base de datos.</p>
           <br>
+        </ul>
          <!-- articulos -->
     <section id="services">
       <div class="col-lg-12 text-center">
