@@ -25,9 +25,15 @@ app.locals.title = "Nodepop";
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger("dev"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+// Configuramos multiidioma en express
+const i18n = require('./lib/i18nConfigure')();
+app.use(i18n.init);
 
 /**
  * Middlewares de la aplicación web
@@ -41,18 +47,20 @@ app.use("/users", require("./routes/users"));
 app.use("/apiv1/anuncios", require("./routes/apiv1/anuncios"));
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error("Not Found");
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   if (err.array) {
     // validation error
     err.status = 422;
-    const errInfo = err.array({ onlyFirstError: true })[0];
+    const errInfo = err.array({
+      onlyFirstError: true
+    })[0];
     err.message = `Not valid - ${errInfo.param} ${errInfo.msg}`;
   }
 
@@ -60,7 +68,10 @@ app.use(function(err, req, res, next) {
 
   // Si es una petición de API, se responde con JSON
   if (isAPI(req)) {
-    res.json({ success: false, error: err.message });
+    res.json({
+      success: false,
+      error: err.message
+    });
     return;
   }
 
