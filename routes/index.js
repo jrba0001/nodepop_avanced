@@ -1,7 +1,10 @@
 "use strict";
-
 var express = require("express");
 var router = express.Router();
+const i18n = require('../lib/i18nConfigure')();
+const sessionAuth = require('../lib/sessionAuth');
+const Usuario = require('../models/Usuario');
+
 
 // Se carga el modelo
 const Anuncio = require("../models/Anuncio");
@@ -11,6 +14,7 @@ const {
   query,
   validationResult
 } = require("express-validator/check");
+
 
 // Página de inicio con las opciones e instrucciones
 

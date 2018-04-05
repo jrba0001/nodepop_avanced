@@ -6,6 +6,8 @@ var bodyParser = require("body-parser");
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const jwtAuth = require('./lib/jwtAuth');
+
 
 // Se conecta la base de datos
 require("./lib/connectMongoose");
@@ -13,9 +15,11 @@ require("./lib/connectMongoose");
 // Se cargan los modelos para que mongoose los conozca
 require("./models/Anuncio");
 
-var index = require("./routes/index");
-var users = require("./routes/users");
+const Usuario = require("./models/Usuario");
 
+var index = require("./routes/index");
+
+//var users = require("./routes/users");
 var app = express();
 
 // view engine setup
@@ -38,9 +42,17 @@ app.use(express.static(path.join(__dirname, "public")));
 const i18n = require('./lib/i18nConfigure')();
 app.use(i18n.init);
 
+const loginController = require('./routes/loginController');
+
+/**
+ * Middlewares de la API
+ */
+app.use("/apiv1/anuncios", require("./routes/apiv1/anuncios"));
+app.use('/loginJWT', loginController.postLoginJWT);
+
 // middleware de control de sesiones
 app.use(session({
-  name: 'nodepop-session',
+  name: 'nodeapi-session',
   secret: 'askjdahjdhakdhaskdas7dasd87asd89as7d89asd7a9s8dhjash',
   resave: false,
   saveUninitialized: false,
@@ -54,23 +66,31 @@ app.use(session({
     // mongooseConnection: conn
   })
 }));
-const loginController = require('./routes/loginController');
+
+app.use(async (req, res, next) => {
+  try {
+    // si el usuario está logado, cargamos en req.user el objeto de usuario desde la base de datos
+    // para que los siguientes middlewares lo puedan usar
+    req.user = req.session.authUser ? await Usuario.findById(req.session.authUser._id) : null;
+    next();
+  } catch (err) {
+    next(err);
+    return;
+  }
+});
 
 /**
  * Middlewares de la aplicación web
  */
-app.get("/login", loginController.index);
-app.post("/login", loginController.post);
-app.get("/logout", loginController.logout);
+app.get('/login', loginController.index);
+app.post('/login', loginController.post);
+app.get('/logout', loginController.logout);
 
 app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
 app.use("/lang", require("./routes/lang"));
 
-/**
- * Middlewares de la API
- */
-app.use("/apiv1/anuncios", require("./routes/apiv1/anuncios"));
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
