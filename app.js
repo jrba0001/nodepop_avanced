@@ -14,7 +14,7 @@ require("./lib/connectMongoose");
 
 // Se cargan los modelos para que mongoose los conozca
 require("./models/Anuncio");
-require("./models/Usuario");
+const Usuario = require("./models/Usuario");
 
 var index = require("./routes/index");
 
@@ -66,7 +66,7 @@ app.use(session({
   })
 }));
 
-/* app.use(async (req, res, next) => {
+app.use(async (req, res, next) => {
   try {
     // si el usuario está logado, cargamos en req.user el objeto de usuario desde la base de datos
     // para que los siguientes middlewares lo puedan usar
@@ -76,7 +76,7 @@ app.use(session({
     next(err);
     return;
   }
-}); */
+});
 
 /**
  * Middlewares de la aplicación web
@@ -89,6 +89,7 @@ app.use("/", require("./routes/index"));
 
 app.use("/users", require("./routes/users"));
 app.use("/lang", require("./routes/lang"));
+
 
 
 

@@ -23,12 +23,23 @@ nodemon o npm run start
 La presente práctica se basa sobre la partica de nodejs fundamentos, revisar repositorio correspondiente para ver que se pedia, en esta práctica se pide
 
 ## **Práctica nodejs avanzada**
-#### Índice de retos:1. Autenticación
-	* Implementar autenticación JWT al API.    2. Internacionalización.
-	* Este reto consiste en convertir el frontend de anuncios de la aplicación Nodepop enmulti-idioma.    
+#### Índice de retos:
+1. Autenticación
+	* Implementar autenticación JWT al API.
+2. Internacionalización.
+	* Este reto consiste en convertir el frontend de anuncios de la aplicación Nodepop en
+multi-idioma.
 3. Subida de imagen con tarea en background
-	* El API necesita un end-point para crear anuncios.4. Testing (Opcional)
-	* Hagamos que la calidad sea una característica de nuestro software.Este reto consiste en incluir tests e2e del API de Anuncios con Supertesthttps://github.com/visionmedia/supertest5. BONUS TRACK
-	* Se propone hacer alguna utilidad de nuestra invención que pueda resultar útil para nosotrosmismos o para otros.
+	* El API necesita un end-point para crear anuncios.
+4. Testing (Opcional)
+	* Hagamos que la calidad sea una característica de nuestro software.
+Este reto consiste en incluir tests e2e del API de Anuncios con Supertest
+https://github.com/visionmedia/supertest
+5. BONUS TRACK
+	* Se propone hacer alguna utilidad de nuestra invención que pueda resultar útil para nosotros
+mismos o para otros.
+# NOTAS DE CONFIGURACION.
+Tras clonar repositorio, hay que configurar las variables en fichero .env, que hay que crear, con las variables para enviar correos de sendgrid, y el tocken.
+Para evitar fallos, no incluimos este fichero en .gitignore, y las variables  de sendgrid van sin rellenar.
 
 

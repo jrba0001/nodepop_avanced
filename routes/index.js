@@ -7,7 +7,6 @@ const Usuario = require('../models/Usuario');
 
 // Se carga el modelo
 const Anuncio = require("../models/Anuncio");
-router.use(sessionAuth());
 
 // Se cargan las librerías de validaciones
 const {
@@ -16,13 +15,13 @@ const {
 } = require("express-validator/check");
 
 
-router.get('/', function (req, res, next) {
+router.get('/', sessionAuth(), function (req, res, next) {
   console.log(req.session.authUser);
 
-  if (!req.session.authUser) {
-    res.redirect('/login');
-    return;
-  }
+  /*  if (!req.session.authUser) {
+     res.redirect('/login');
+     return;
+   } */
   //Se renderiza
   res.render('index', {
     title: 'Nodepop'
@@ -36,10 +35,10 @@ router.get('/anuncios', sessionAuth(), async (req, res, next) => {
   //console.log(req.session.authUser);
 
   // Redigir al login si no está autenticado
-  if (!req.session.authUser) {
-    res.redirect('/login');
-    return;
-  }
+  /*  if (!req.session.authUser) {
+     res.redirect('/login');
+     return;
+   } */
 
   // Con async/await
   try {
@@ -130,95 +129,4 @@ function filtrarPrecio(precio) {
 
   return parseInt(precio);
 }
-
-module.exports = router;
-
-/*
-// Listado de anuncios HTML
-router.get("/", async (req, res, next) => {
-  // Con async/await
-  try {
-    // Se recogen los parámetros de entrada
-    const nombre = req.query.nombre;
-    const estado = req.query.estado;
-    const precio = req.query.precio;
-    const tags = req.query.tags;
-    const skip = parseInt(req.query.skip);
-    const limit = parseInt(req.query.limit);
-    const sort = req.query.sort;
-    const fields = req.query.fields;
-
-    // Filtro vacío inicial
-    const filtro = {};
-
-    // Filtrar por nombre
-    if (typeof nombre !== "undefined") {
-      // Se añade el nombre (por el que empiece) al filtro
-      filtro.nombre = new RegExp("^" + nombre, "i");
-    }
-
-    // Filtrar por tipo de anuncio (true -> venta / false -> búsqueda)
-    if (typeof estado !== "undefined") {
-      // Se añade el tipo de anuncio al filtro
-      filtro.estado = estado;
-    }
-
-    // Filtrar por precio
-    if (typeof precio !== "undefined") {
-      // Se filtra por precio
-      filtro.precio = filtrarPrecio(precio);
-    }
-
-    // Filtrar por tags
-    if (typeof tags !== "undefined") {
-      // Se introduce dentro de un vector el tag buscado
-      filtro.tags = [tags];
-
-      // Se comprueba si el tag está dentro de los tags de la base de datos
-      filtro.tags = {
-        $in: filtro.tags
-      };
-    }
-
-    // La función debe ser asíncrona si se usa await
-    const docs = await Anuncio.listar(filtro, skip, limit, sort, fields);
-
-    // Se le pasan los resultados a la vista
-    res.locals.anuncios = docs;
-
-    // Se renderiza
-    res.render("index.ejs", {
-      title: "Nodepop"
-    });
-  } catch (err) {
-    next(err);
-    return;
-  }
-});
-
-// Función para filtrar por precio
-function filtrarPrecio(precio) {
-  // Rango entre x-y ( > x && < y )
-  if (/^[0-9]+\-[0-9]+$/.test(precio)) {
-    return {
-      $gte: parseInt(precio.split("-")[0]),
-      $lte: parseInt(precio.split("-")[1])
-    };
-  }
-  // Rango entre x- ( > x )
-  if (/^[0-9]+\-$/.test(precio)) {
-    return {
-      $gte: parseInt(precio.match(/[0-9]+/))
-    };
-  }
-  // Rango entre -y ( < y )
-  if (/^-[0-9]+$/.test(precio)) {
-    return {
-      $lte: parseInt(precio.match(/[0-9]+/))
-    };
-  }
-
-  return parseInt(precio);
-} */
-
 module.exports = router;
