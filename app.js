@@ -14,8 +14,7 @@ require("./lib/connectMongoose");
 
 // Se cargan los modelos para que mongoose los conozca
 require("./models/Anuncio");
-
-const Usuario = require("./models/Usuario");
+require("./models/Usuario");
 
 var index = require("./routes/index");
 
@@ -52,7 +51,7 @@ app.use('/loginJWT', loginController.postLoginJWT);
 
 // middleware de control de sesiones
 app.use(session({
-  name: 'nodeapi-session',
+  name: 'nodepop-session',
   secret: 'askjdahjdhakdhaskdas7dasd87asd89as7d89asd7a9s8dhjash',
   resave: false,
   saveUninitialized: false,
@@ -67,7 +66,7 @@ app.use(session({
   })
 }));
 
-app.use(async (req, res, next) => {
+/* app.use(async (req, res, next) => {
   try {
     // si el usuario está logado, cargamos en req.user el objeto de usuario desde la base de datos
     // para que los siguientes middlewares lo puedan usar
@@ -77,7 +76,7 @@ app.use(async (req, res, next) => {
     next(err);
     return;
   }
-});
+}); */
 
 /**
  * Middlewares de la aplicación web
@@ -87,6 +86,7 @@ app.post('/login', loginController.post);
 app.get('/logout', loginController.logout);
 
 app.use("/", require("./routes/index"));
+
 app.use("/users", require("./routes/users"));
 app.use("/lang", require("./routes/lang"));
 

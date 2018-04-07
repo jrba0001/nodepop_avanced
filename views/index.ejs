@@ -71,41 +71,6 @@
           <a href="/apiv1/anuncios">http://localhost:3000/apiv1/anuncios</a> se pueden borrar anuncios a la base de datos.</p>
           <br>
         </ul>
-         <!-- articulos -->
-    <section id="services">
-      <div class="col-lg-12 text-center">
-        <h3> Listado de anuncios:</h3>
-        <TABLE BORDER ALIGN=CENTER WIDTH="90%">
-          <% anuncios.forEach(anuncio => {%>
-            <tr>
-              <td>
-              <p>
-                <b>Artículo:</b>
-                <%= anuncio.nombre %>
-              </p>
-              <p>
-                <b>Estado:</b>
-                <%= anuncio.estado %>
-              </p>
-              <p>
-                <b>Precio:</b>
-                <%= anuncio.precio %> €</p>
-              </p>
-                <p>
-                  <b>Etiquetas: </b>
-                    <% anuncio.tags.forEach(tag => {  %>
-                       <%= tag %>
-                    <% }) %>
-                 </p>
-              </td>
-              <td ALIGN=CENTER>
-                <img src="images/anuncios/<%= anuncio.foto %>" alt="Foto Articulo" width="450" height="400">
-              </td>
-            </tr>
-            <br>
-            <% }) %>
-          </div>
-      </div>
-    </section>
+
 
 <% include footer.html %>
