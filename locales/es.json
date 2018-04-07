@@ -17,5 +17,8 @@
 	" Listado por nombre = biclice, precio mayor que 1000, ordenador precio descendiente, limitada a una busqueda.": " Listado por nombre = biclice, precio mayor que 1000, ordenador precio descendiente, limitada a una busqueda.",
 	"Listado por nombre = bicliceta, precio mayor que 1000, ordenador precio descendiente, limitada a una busqueda.": "Listado por nombre = bicliceta, precio mayor que 1000, ordenador precio descendiente, limitada a una busqueda.",
 	"Login": "Login",
-	"Please login to access": "Please login to access"
+	"Please login to access": "Please login to access",
+	"Anuncios": "Anuncios",
+	"Añadir": "Añadir",
+	"Volver": "Volver"
 }

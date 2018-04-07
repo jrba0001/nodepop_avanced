@@ -7,6 +7,7 @@ const Usuario = require('../models/Usuario');
 
 // Se carga el modelo
 const Anuncio = require("../models/Anuncio");
+router.use(sessionAuth());
 
 // Se cargan las librerías de validaciones
 const {
@@ -14,7 +15,6 @@ const {
   validationResult
 } = require("express-validator/check");
 
-// Página de inicio con las opciones e instrucciones
 
 router.get('/', function (req, res, next) {
   console.log(req.session.authUser);
@@ -36,10 +36,10 @@ router.get('/anuncios', sessionAuth(), async (req, res, next) => {
   //console.log(req.session.authUser);
 
   // Redigir al login si no está autenticado
-  /*if (!req.session.authUser) {
+  if (!req.session.authUser) {
     res.redirect('/login');
     return;
-  }*/
+  }
 
   // Con async/await
   try {
