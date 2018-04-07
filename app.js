@@ -7,6 +7,8 @@ var bodyParser = require("body-parser");
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const jwtAuth = require('./lib/jwtAuth');
+const multer = require('multer');
+
 
 
 // Se conecta la base de datos

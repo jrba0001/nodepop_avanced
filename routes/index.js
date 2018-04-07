@@ -4,6 +4,8 @@ var router = express.Router();
 const i18n = require('../lib/i18nConfigure')();
 const sessionAuth = require('../lib/sessionAuth');
 const Usuario = require('../models/Usuario');
+const upload = require('../lib/uploadConfig');
+
 
 // Se carga el modelo
 const Anuncio = require("../models/Anuncio");
@@ -27,6 +29,29 @@ router.get('/', sessionAuth(), function (req, res, next) {
     title: 'Nodepop'
   });
 });
+
+router.get('/crear', sessionAuth(), function (req, res, next) {
+  res.render('crear');
+});
+
+
+router.post('/sendemail', sessionAuth(), async (req, res, next) => {
+  try {
+
+    await req.user.sendMail('Nodeapi', 'Asunto de prueba', 'Correo de prueba');
+
+    res.redirect('/');
+  } catch (err) {
+    next(err);
+    return;
+  }
+});
+
+router.post('/upload', sessionAuth(), upload.single('imagen'), (req, res, next) => {
+  console.log('upload:', req.file);
+  res.redirect('/');
+});
+
 
 // Listado de anuncios HTML
 // Con sessionAuth se especifica si es necesario iniciar sesión para entrar
