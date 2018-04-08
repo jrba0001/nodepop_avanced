@@ -1,5 +1,12 @@
 # Práctica Nodejs Avanzado (nodepop_avanced) de MasterBootcamp Web Keepcoding.
 
+### Ejemplo de modulo npm creado y subbido, por jrba, para cálculo de dosis antibioticoterapía para primer dia.
+
+
+https://www.npmjs.com/package/ejemplo_microservicios
+npm i ejemplo_microservicios
+
+
 ### Nodejs - Mongodb - Express
 
 * Arrancar la base de datos mongodb.
