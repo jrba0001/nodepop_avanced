@@ -17,12 +17,12 @@ en nuestro caso, por comodidad hemos creado un script en la ruta mongodb y llama
 
 > Para ejecutar npm run inicializa, no olvidar tener el motor de base de datos arrancado.
 
-*Crear usuarios en la base de datos:
-Hay que ejecutar npm run install_D, para cargar los usuarios. Se crea un usuario admin@example.com con 1234 contraseña para hacer login.
+* Crear usuarios en la base de datos:
+Hay que ejecutar **npm run install_D,** para cargar los usuarios. Se crea un usuario admin@example.com con 1234 contraseña para hacer login.
 
 *arrancar nuestro servidor:
 - npm run dev   o
-- npm run start.
+- **npm run start**.
 
 La presente práctica se basa sobre la partica de nodejs fundamentos, revisar repositorio correspondiente para ver que se pedia, en esta práctica se pide
 
@@ -45,5 +45,11 @@ mismos o para otros.
 # NOTAS DE CONFIGURACION.
 Tras clonar repositorio, hay que configurar las variables en fichero .env, que hay que crear, con las variables para enviar correos de sendgrid, y el tocken.
 Para evitar fallos, no incluimos este fichero en .gitignore, y las variables  de sendgrid van sin rellenar.
+
+La subida de imágenes al servidor y creación de thumbnail, se realiza mediente rabbitmq. Para el correcto funcionamiento:
+
+*** En una ventana bash, arrancar dentro de la carpeta /lib de nuestro proyecto node consumer.js**
+
+* **Podemos comprobar, como para cada subida de archivos, el publiser va encolando los mensajes, a la cola rabbitmq, y posteriormente va dejandolos en el servidor.**
 
 
