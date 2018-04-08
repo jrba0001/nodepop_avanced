@@ -17,8 +17,12 @@ en nuestro caso, por comodidad hemos creado un script en la ruta mongodb y llama
 
 > Para ejecutar npm run inicializa, no olvidar tener el motor de base de datos arrancado.
 
-arrancar nuestro servidor
-nodemon o npm run start
+*Crear usuarios en la base de datos:
+Hay que ejecutar npm run install_D, para cargar los usuarios. Se crea un usuario admin@example.com con 1234 contraseña para hacer login.
+
+*arrancar nuestro servidor:
+- npm run dev   o
+- npm run start.
 
 La presente práctica se basa sobre la partica de nodejs fundamentos, revisar repositorio correspondiente para ver que se pedia, en esta práctica se pide
 
