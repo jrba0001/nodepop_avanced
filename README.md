@@ -52,4 +52,10 @@ La subida de imágenes al servidor y creación de thumbnail, se realiza mediente
 
 * **Podemos comprobar, como para cada subida de archivos, el publiser va encolando los mensajes, a la cola rabbitmq, y posteriormente va dejandolos en el servidor.**
 
+### TESTING
 
+Para realizar los test
+
+$ npm run e2e
+
+###  http://localhost:3000/
