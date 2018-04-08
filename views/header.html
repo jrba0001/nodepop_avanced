@@ -37,7 +37,7 @@
                 <% getLocales().forEach( lang => { %>
                     <a href="/lang/<%= lang %>">
                         <%= lang %>
-                    </a>&nbsp;
+                    </a> &nbsp &nbsp;
                     <% }) %>
 
                         <ul class="navbar-nav text-uppercase ml-auto">
@@ -59,7 +59,9 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="/logout">Logout</a>
+                                <a class="nav-link js-scroll-trigger" href="/logout">
+                                    <%= __('Salir') %>
+                                </a>
                             </li>
                         </ul>
             </div>
