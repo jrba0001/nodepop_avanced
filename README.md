@@ -66,3 +66,14 @@ Para realizar los test
 $ npm run e2e
 
 ###  http://localhost:3000/
+
+### Para la utilizacion de la apiv1, es necesario la obtencion de token:
+
+### localhost:3000/loginJWT. hacemos un post a esta dirección y en el body nos autenticamos con email y password, en este caso el usuario es admin@example.com con password 1234.
+
+El token obtenido es = <p>Todos los ejemplos anteriores pueden realizarse atacando a la api: /apiv1/anuncios?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWNhNmQyNjU4NDVjMzliYzhkY2NlYjgiLCJpYXQiOjE1MjMyMTU5MTgsImV4cCI6MTUyMzM4ODcxOH0.98fMGCkMNSDY85NuH4JNlNwTF23thYEo2l1t3T5Yrw4
+
+Pide token, podemos autenticarnos con postman y hacer un post para obtener el token. El día de la prueba el token facilitado es: 
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWNhNmQyNjU4NDVjMzliYzhkY2NlYjgiLCJpYXQiOjE1MjMyMTU5MTgsImV4cCI6MTUyMzM4ODcxOH0.98fMGCkMNSDY85NuH4JNlNwTF23thYEo2l1t3T5Yrw4
+        
+        
