@@ -5,10 +5,12 @@ const i18n = require('../lib/i18nConfigure')();
 const sessionAuth = require('../lib/sessionAuth');
 const Usuario = require('../models/Usuario');
 const upload = require('../lib/uploadConfig');
+const path = require('path');
+var publisher = require('../lib/publisher')
 
 
 // Se carga el modelo
-const Anuncio = require("../models/Anuncio");
+const anuncio = require("../models/Anuncio");
 
 // Se cargan las librerías de validaciones
 const {
@@ -49,6 +51,8 @@ router.post('/sendemail', sessionAuth(), async (req, res, next) => {
 
 router.post('/upload', sessionAuth(), upload.single('imagen'), (req, res, next) => {
   console.log('upload:', req.file);
+  publisher(req)
+
   res.redirect('/');
 });
 
