@@ -48,7 +48,7 @@ const loginController = require('./routes/loginController');
 /**
  * Middlewares de la API
  */
-app.use("/apiv1/anuncios", require("./routes/apiv1/anuncios"));
+app.use("/apiv1/anuncios", jwtAuth(), require("./routes/apiv1/anuncios"));
 app.use('/loginJWT', loginController.postLoginJWT);
 
 // middleware de control de sesiones
