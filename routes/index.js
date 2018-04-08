@@ -6,11 +6,11 @@ const sessionAuth = require('../lib/sessionAuth');
 const Usuario = require('../models/Usuario');
 const upload = require('../lib/uploadConfig');
 const path = require('path');
-var publisher = require('../lib/publisher')
+var publisher = require('../lib/publisher');
 
 
 // Se carga el modelo
-const anuncio = require("../models/Anuncio");
+const Anuncio = require("../models/Anuncio");
 
 // Se cargan las librerías de validaciones
 const {
@@ -50,9 +50,17 @@ router.post('/sendemail', sessionAuth(), async (req, res, next) => {
 });
 
 router.post('/upload', sessionAuth(), upload.single('imagen'), (req, res, next) => {
-  console.log('upload:', req.file);
-  publisher(req)
 
+  var anuevo = new Anuncio();
+  anuevo.nombre = req.body.nombre;
+  anuevo.estado = req.body.isSale;
+  anuevo.precio = req.body.precio;
+  anuevo.foto = req.file.filename;
+  anuevo.tags = req.body.tags;
+  anuevo.save();
+  //console.log(req.file);
+  console.log('uploaden index:', req.file);
+  publisher(req.file)
   res.redirect('/');
 });
 
